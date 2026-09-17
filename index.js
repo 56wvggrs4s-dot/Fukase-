@@ -65,50 +65,23 @@ function isAdmin(message) {
 }
 
 // ═══════════════════════════════════════
-// 💌 MENSAJES PRIVADOS
+// 💌 MENSAJE PRIVADO DE BIENVENIDA
 // ═══════════════════════════════════════
-
-// 📝 PRIMER MENSAJE POR MD
-// Puedes modificar este mensaje cuando quieras.
 
 function getFirstDMMessage(member) {
   return {
-    embeds: [
-      new EmbedBuilder()
-        .setColor(0xf1c40f)
-        .setTitle("♟️🃏 ¡Bienvenido!")
-        .setDescription(
-          `¡Hola **${member.user.username}**! 👋\n\n` +
-          `Has entrado a nuestra comunidad de **Ajedrez ♟️ + Póker 🃏**.\n\n` +
-          `Prepárate para partidas, estrategia y mucha diversión.`
-        )
-        .setFooter({
-          text: "♟️ Cada movimiento cuenta • 🃏 Cada carta importa"
-        })
-    ]
-  };
-}
-
-// 📝 SEGUNDO MENSAJE POR MD
-// ╔══════════════════════════════════════╗
-// ║ ✏️ MODIFICA ESTE MENSAJE COMO QUIERAS ║
-// ╚══════════════════════════════════════╝
-
-function getSecondDMMessage(member) {
-  return {
-    embeds: [
-      new EmbedBuilder()
-        .setColor(0x3498db)
-        .setTitle("📝 Mensaje personalizado")
-        .setDescription(
-          `¡Hola ${member}! 👋\n\n` +
-          `AQUÍ PUEDES PONER TU PROPIO MENSAJE.\n\n` +
-          `Puedes cambiar todo este texto desde index.js. ♟️🃏`
-        )
-        .setFooter({
-          text: "♟️🃏 Tu mensaje personalizado"
-        })
-    ]
+    content:
+      `# Bienvenido/a a Redkings\n\n` +
+      `> 🎉 **¡Bienvenido/a a Redkings!** 🃏\n` +
+      `> Nos alegra mucho tenerte aquí. ✨\n\n` +
+      `> 📌 Explora el servidor, conoce a la comunidad y disfruta de todas las funciones que tenemos preparadas para ti.\n` +
+      `> 🤝 Respeta a los demás, sigue las reglas y, sobre todo, ¡diviértete!\n\n` +
+      `> 💎 **¡Tu aventura en Redkings comienza ahora!**\n` +
+      `> Esperamos verte formar parte de nuestra comunidad. 🖤\n\n` +
+      `🔗 **Links de nuestra network:**\n` +
+      `https://discord.gg/M8kCgt8JJ\n` +
+      `https://discord.gg/DaUJ4a3eg\n` +
+      `https://discord.gg/cGc9QQqPnX`
   };
 }
 
@@ -174,26 +147,14 @@ client.on("guildMemberAdd", async (member) => {
   }
 
   // ─────────────────────────────────────
-  // 💌 PRIMER MD
+  // 💌 MD DE BIENVENIDA
   // ─────────────────────────────────────
 
   try {
     await member.send(getFirstDMMessage(member));
   } catch {
     console.log(
-      `⚠️ No se pudo enviar el primer MD a ${member.user.tag}`
-    );
-  }
-
-  // ─────────────────────────────────────
-  // 💌 SEGUNDO MD
-  // ─────────────────────────────────────
-
-  try {
-    await member.send(getSecondDMMessage(member));
-  } catch {
-    console.log(
-      `⚠️ No se pudo enviar el segundo MD a ${member.user.tag}`
+      `⚠️ No se pudo enviar el MD a ${member.user.tag}`
     );
   }
 });
@@ -283,7 +244,7 @@ client.on("messageCreate", async (message) => {
           .setTitle("♟️🃏 ¡Canal configurado!")
           .setDescription(
             `Las nuevas bienvenidas aparecerán en ${channel}.\n\n` +
-            `💌 Además, los nuevos miembros recibirán los dos mensajes por MD.`
+            `💌 Además, los nuevos miembros recibirán el mensaje por MD.`
           )
           .setFooter({
             text: "Configuración guardada automáticamente"
@@ -315,8 +276,7 @@ client.on("messageCreate", async (message) => {
         `💌 **Sistema automático**\n` +
         `Los nuevos miembros reciben automáticamente:\n` +
         `• Un mensaje de bienvenida en el canal configurado.\n` +
-        `• Un primer mensaje por MD.\n` +
-        `• Un segundo mensaje personalizado por MD.`
+        `• Un mensaje de bienvenida por MD.`
       )
       .setFooter({
         text: "♟️🃏 Ajedrez + Póker"
@@ -390,7 +350,7 @@ http.createServer((req, res) => {
     "Content-Type": "text/plain"
   });
 
-  res.end("♟️🃏 Bot online");
+  res.end("♟️🃏 Fusake online");
 }).listen(PORT, () => {
   console.log(`🌐 Servidor web activo en el puerto ${PORT}`);
 });
